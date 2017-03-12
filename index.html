@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<title>Trivia Game</title>
+</head>
+<body>
+	<div class="container">
+
+		<!-- Starting Page -->
+		<div class="row">
+			<div class="col-md-12" id="startPage">
+				<h1> Are you ready to find out your IQ? </h1>
+		    	<button type="button" class="btn btn-default" id="yes">YES</button>
+		    	<button type="button" class="btn btn-default" id="no">NO</button>
+			</div>
+		</div>
+
+		<!-- Timer -->
+		<div class="row">
+			<div class="col-md-12">
+				<div id="timer">
+					<h4>Time left: <span id="time">60</span></h4>
+				</div>
+			</div>
+		</div>
+
+		<!-- Game Field -->
+		<div id="game">
+
+			<!-- Qestion -->
+			<div class="row">
+				<div class="col-md-12" id="question"></div>
+			</div>
+
+			<!-- Choices -->
+			<div class="row">
+				<div class="col-md-12"  >
+					<form class="form">
+						<div class="form-group" id="choices">
+							
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Score Field -->
+		<div id="score">
+			<h3>
+				<p>Correct answers:  <span id='correct'></span></p>
+				<p>Wrong answers:  <span id="wrong"></span></p>
+			</h3>
+		</div>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+</html>
