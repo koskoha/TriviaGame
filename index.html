@@ -6,17 +6,17 @@
  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Aclonica|Diplomata+SC|Fredoka+One|Limelight|Sue+Ellen+Francisco" rel="stylesheet">
 	<title>Trivia Game</title>
 </head>
 <body>
-	<div class="container">
-
+	<div class="container container_style">
+		<div class="row"><h1 id="title">IQ Tester</h1></div>
 		<!-- Starting Page -->
 		<div class="row">
 			<div class="col-md-12" id="startPage">
 				<h1> Are you ready to find out your IQ? </h1>
-		    	<button type="button" class="btn btn-default" id="yes">YES</button>
-		    	<button type="button" class="btn btn-default" id="no">NO</button>
+		    	<button type="button" class="btn btn-default" id="yes">Let's go!</button>
 			</div>
 		</div>
 
@@ -24,11 +24,18 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div id="timer">
-					<h4>Time left: <span id="time">60</span></h4>
+					Time Remaining: <span id="time">5</span>
 				</div>
 			</div>
 		</div>
 
+		<!-- Answer Feedback -->
+		<div class="row">
+			<dir class="col-md-12" id="feedback">
+				
+			</dir>
+		</dir>
+		
 		<!-- Game Field -->
 		<div id="game">
 
@@ -39,12 +46,8 @@
 
 			<!-- Choices -->
 			<div class="row">
-				<div class="col-md-12"  >
-					<form class="form">
-						<div class="form-group" id="choices">
-							
-						</div>
-					</form>
+				<div class="col-md-12" id="choices" >
+					
 				</div>
 			</div>
 
@@ -55,7 +58,12 @@
 			<h3>
 				<p>Correct answers:  <span id='correct'></span></p>
 				<p>Wrong answers:  <span id="wrong"></span></p>
+				<p>Unanswered:  <span id="unanswered"></span></p>
+		    	<button type="button" class="btn btn-default" id="restart">Restart</button>
 			</h3>
+			<div id="log">
+				
+			</div>
 		</div>
 	</div>
 
