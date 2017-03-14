@@ -1,3 +1,4 @@
+// Question constructor
 function Test (question, choices, answer, correctLink, wrongLink){
 	this.question = question;
 	this.choices = choices;
@@ -6,14 +7,18 @@ function Test (question, choices, answer, correctLink, wrongLink){
 	this.wrongLink = wrongLink;
 }
 
-var test1 = new Test('how is your name?',['kostya','mariya','nik','tom'], 0, 'https://media.giphy.com/media/3o7TKy1qgGdbbMalcQ/giphy.gif', 'https://media.giphy.com/media/3o72FkpOJBMVHXmfEQ/giphy.gif' );
-var test2 = new Test("where do you live?", ["Washington",'Arlington','Alexandria', 'Gaithersburg'], 3,'https://media.giphy.com/media/l41Ywr3dQBOujzU7m/giphy.gif', 'https://media.giphy.com/media/l0MYBH5ubT7grWRt6/giphy.gif');
-var test3 = new Test("How old are you", ['10','23', 28,'40'], 2, 'https://media.giphy.com/media/l41YwLuanve0L4XOE/giphy.gif', 'https://media.giphy.com/media/l0HlIjjcU0l2fOFVK/giphy.gif');
+var test1 = new Test('Which one of the four is least like the other tree?',['Elephant','Snake','Lion','Mouse'], 1, 'https://media.giphy.com/media/3o7TKy1qgGdbbMalcQ/giphy.gif', 'https://media.giphy.com/media/3o72FkpOJBMVHXmfEQ/giphy.gif' );
+var test2 = new Test("Finish the sentence, Book is to Reading as Fork is to:", ["drawing",'stirring','writing', 'eating'], 3,'https://media.giphy.com/media/l41Ywr3dQBOujzU7m/giphy.gif', 'https://media.giphy.com/media/l0MYBH5ubT7grWRt6/giphy.gif');
+var test3 = new Test("Finish the sentence, Gym is to Healthy as Book is to ?", ['Intelligent','Knowledgeable', 'Smart','Good'], 2, 'https://media.giphy.com/media/l41YwLuanve0L4XOE/giphy.gif', 'https://media.giphy.com/media/l0HlIjjcU0l2fOFVK/giphy.gif');
 var test4 = new Test("Who is the president of USA", ["Bush", 'Klinton', 'Trump','Obama'], 2, 'https://media.giphy.com/media/3o6Zt8qDiPE2d3kayI/giphy.gif', 'https://media.giphy.com/media/l0MYDPoYmha3jOGxq/giphy.gif');
 
 var questionNum = 0;
 var testQustions =[test1,test2,test3,test4];
+
+// question timer
 var timer;
+
+// correct/wrong window timer
 var timeout;
 var time= 30;
 
@@ -22,7 +27,7 @@ var wrongAns = 0;
 var unanswered = 0;
 
 
-
+//checking user input and comparing it to correct answer
 function checkInput(input, question){
 	$('#game').hide();
 	if (input == question.answer) {
@@ -36,6 +41,7 @@ function checkInput(input, question){
 	}
 }
 
+//resetion timer for new question and calling function to print new question
 function resetInterval(interval){
 	clearTimeout(timeout);
 	clearInterval(timer);
@@ -43,6 +49,7 @@ function resetInterval(interval){
 	time = 30;
 }
 
+// Printing correct/wrong answer feedback
 function printFeedback(feedback, question){
 	$('#feedback').fadeIn();
 	timeout = setTimeout(resetInterval,2000);
@@ -57,6 +64,7 @@ function printFeedback(feedback, question){
 	}
 }
 
+// function for printing timer
 function printTime(){
 	if (time === 0) {
 		unanswered++;
@@ -66,7 +74,8 @@ function printTime(){
 	time--;
 }
 
-function printScore(wrongAns, correctAns){
+//print final score for game.
+function printScore(){
 	clearInterval(timer);
 	clearTimeout(timeout);
 	$('#game').hide();
@@ -77,12 +86,16 @@ function printScore(wrongAns, correctAns){
 	$('#wrong').text(wrongAns)
 }
 
+//function print new question and choices and create event listener for choices.
+//getting user input and sending it for check.
 function printQuestion(question){
 	timer = setInterval(printTime, 1000);
 	clearTimeout(timeout);
 	$('#feedback').hide();
 	$('#game').fadeIn();
 	questionNum++;
+	//if current question isn't last, than print new question
+	// otherwise print score
 	if (questionNum <= testQustions.length) {
 		$("#question").hide();
 		$('#question').html(question.question);
@@ -101,7 +114,7 @@ function printQuestion(question){
 		$('#choices').fadeIn();
 	}else{
 		console.log('No more questions');
-		printScore(wrongAns, correctAns);
+		printScore();
 	}
 }
 
@@ -126,8 +139,7 @@ function restart(){
 	start();
 }
 
-
-
+//Listener for Starting page. 
 $(document).ready(function(){
 	$('#yes').click("#startPage", function(){
 		start();
